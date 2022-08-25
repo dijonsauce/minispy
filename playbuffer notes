@@ -1,0 +1,183 @@
+//PlayBuffer Notes
+//Single header library = 
+//if the full definitions of all macros, 
+//functions and classes comprising the library 
+//are visible to the compiler in a header file form.
+//Easier to incorporate into your own programs.
+
+//COMMENTS, // at start.
+
+
+//GROUP OF STATEMENTS, { } Curly brackets at beginning and end, must match.
+	{
+		//Example
+		//Example 2
+	}
+	
+	
+//BASIC DATA TYPES
+// INTEGER(int) to store whole numbers (5, 1, 0, -8, etc.)
+int 5
+
+// FLOATING POINT (float) to store decimal values with letter f 
+// in code(1.7f, 5.6669f, -0.1345f, etc.).
+float 1.7f
+
+// BOOLEAN (bool) are either TRUE or FALSE.
+bool true
+
+//Character (char) to store text characters ('A', 'p', '$', etc.) 
+//& (char*) types 'point' to  longer text character sequences ("Hello World.").
+char 'A'
+char* "Hello World!"
+
+
+//EXPRESSION STATEMENTS, use Semi-colons (;) like a full-stop to indicate finished sentence
+{
+	int var = 0; // creates integer called 'var' with 0 value
+}
+
+//It's important to initialise your variables to have a specific value,
+//otherwise they contain random data which can give your variable a different value each time the game is run.
+
+
+//VARIABLES
+//LOCAL scope, delcared inside of a function, only accessible 
+//from within that function and after the point they are declared.
+//(Rare) GLOBAL scope, declared outside of any function and can be accessed 
+//from within any function after they have been declared.
+int globalVariable = 4; // variable has global scope
+
+void DoSomething()
+{
+	int localVariable = globalVariable; // variabe has local scope
+}
+
+//ARRAYS
+//Any data type can be declared and accessed as an array, 
+//a series of elements of same type accessed using an index 
+//inside square brackets ([]).
+//Indices start from 0 and range up to one less than the size of the array.
+{
+	int bonus[4] = { 1000, 2000, 4000, 8000 };
+	score = score + bonus[0]; // adds 1000 to the score
+	score = score + bonus[2]; // adds 4000 to the score 
+	score = score + bonus[3]; // adds 8000 to the score
+	score = score + bonus[4]; // error - index out of range!
+}
+
+
+//FUNCTIONS
+//Functions definitions being with their 'return type' (output) and folllowed by thr function name.
+//If they don't return anythin then their return type is set to 'void'.
+//Subsequent parantheses/curved brackets mark the beginning and end
+//of the 'parameters' (inputs) for that function.
+//Each parameter has its own type and name.
+int Bigger( int a, int b ) // integer return type and two integer parameters{
+{
+	if(a > b )
+	{
+		return a; // integer a is return
+	}
+	else
+	{
+		return b; // integer b is returned
+	}
+}
+//Next line contains a curly bracket to mark the start of the code for the function,
+//This function consludes with a return statment which returns the output in the appropriate type.
+//End of the function is marked by closing curly bracket.
+//Any code after return statement is not executed.
+
+//Code to call the same function:
+{
+	int biggest = Bigger(7, 4 ); //7 is returned and assigned to the variable 'biggest'
+}
+
+//C++ needs to know about a function before it can be called,
+//you can add function definitions at the start of files but not always.
+//We can also declare a function without defining it,
+//C++ will know how to make use of the function before it knows how it works inside.
+
+int Bigger( int a, int b ); // integer return type and two integer parameters
+
+//Function declarations must match the equivalent function definition
+//in terms of their return type and arguments, or compile errors.
+
+
+//REFERENCES
+{
+	int x = 4;
+	int y = 10;
+	SwapValues( x, y );
+	// x and y should now have swapped values, but have they?
+}
+
+//C++ makes copies of variables which are passed in and out of functions, 
+//so changing variable insdie function doesn't change the original variable 
+//used as arguments, only the local copies.
+
+void SwapValues( int a, int b ) // two integer parameters are passed 'by value' (copied)
+{
+	int temp = b;
+	b = a; // b is a local variable which holds a copy of the value of you
+	a = temp; //a is a local virabl hoding copy of x value
+	//the values of x and y have NOT changed in the calling function.
+}
+	
+//'Ampersand' (&) can be added in front of parameter name, 
+//it indicates that it should be treated as a 'reference' to the orignal variable rather than a copy.
+//Now the function changes the original values and swaps their values around in the calling function.
+
+void SwapValues( int &a, int &b ) // two integer parameters are passed 'by reference'
+{
+	int temp = b;
+	b = a; //b is a reference to the original y vsriablle: changing b changes y
+	a = temp; //a is now a a reference to the orignal x variable: changing a changes x
+//the values of x and y have changed in the calling function
+}
+
+{
+	int x = 4;
+	int y = 10;
+	SwapValues( x, y );
+}
+
+//References can also be used as return values from functions when it is necessary to 
+//return a reference to something rather than just a copy of it.
+
+
+//STRUCTS
+//You can group types together to form a data structures (structs).
+//The part of the structure are callled data 'memebers' and should includesdefault values
+//which are used to initialise any variables created of this new data type.
+
+struct Point2f
+{
+	float x = 0.0f; // the default x value is 0
+	float y = 0.0f; // the default y value is 0
+};
+
+//Once defined, they can be declared like other variables but with additional ways to initialise and access their members.
+
+{
+	Point2f pos[3] = { { 5.0f, 3.3f }, { 4.2f, 1.0f }, { 1.0f, 0.2f } };
+}
+
+
+//ENUMERATIONS
+//Integers (int) can be used to represent all sorts of meanins in code.
+//Example value 0 to represent facing left and value 1 for facing right,
+//We can define 'Facing' enum which assigns meaningful names and automatically assigns a value.
+
+enum Facing
+{
+	LEFT = 0,
+	RIGHT = 1,
+};
+
+
+
+
+
+
